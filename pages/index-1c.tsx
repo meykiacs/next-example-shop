@@ -1,9 +1,8 @@
-// option 1: fetch products on incremental static regeneration
-
+// option 1c: fetch products on serverside
 import Head from 'next/head'
 import { getProducts, Product } from '@/lib/products'
 import Title from '../components/Title'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps, GetStaticProps } from 'next'
 
 type HomePageProps = {
   products: Product[]
@@ -31,12 +30,11 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
 
 export default HomePage
 
-export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+export const getServerSideProps: GetServerSideProps<HomePageProps> = async () => {
   console.log('[HomePage] getstaticProps()')
   const products = await getProducts()
 
   return {
     props: { products },
-    revalidate: 5*60
   }
 }

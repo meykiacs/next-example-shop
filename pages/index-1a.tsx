@@ -1,5 +1,4 @@
-// option 1: fetch products on incremental static regeneration
-
+// option 1a: fetch products with static site generation (in getStaticProps)
 import Head from 'next/head'
 import { getProducts, Product } from '@/lib/products'
 import Title from '../components/Title'
@@ -37,6 +36,5 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
 
   return {
     props: { products },
-    revalidate: 5*60
   }
 }

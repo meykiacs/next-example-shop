@@ -1,6 +1,8 @@
-import React from 'react'
+type Props = {
+  children: React.ReactNode
+}
 
-const Title: React.FC = ({ children }) => {
+const Title: React.FC<Props> = ({ children }) => {
   return <h1 className="text-2xl pb-4">{children}</h1>
 }
 
